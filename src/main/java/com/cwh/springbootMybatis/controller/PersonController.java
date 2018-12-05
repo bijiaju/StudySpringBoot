@@ -1,35 +1,52 @@
 package com.cwh.springbootMybatis.controller;
 
+import com.cwh.springbootMybatis.dao.PersonRepository;
 import com.cwh.springbootMybatis.entity.Person;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.cwh.springbootMybatis.entity.User;
+import com.cwh.springbootMybatis.service.UserService;
+import com.cwh.springbootMybatis.util.CommonUtil;
+import com.cwh.springbootMybatis.util.PageUtil;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-/**
- * 这里类目前是为了掩饰内部可以调用html
- */
-@Controller//为了能够看html，所以使用这Controller
-@RequestMapping("/person")
+@RestController  //注解相当于@ResponseBody ＋ @Controller合在一起的作用
+@RequestMapping(value = "/person")
 public class PersonController {
+	private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
+	@Autowired
+	private PersonRepository personRepository;
 
-    @RequestMapping("/")
-    public String index(Model model){
-        Person single = new Person("aa",11);
+	@PostMapping(path = "addPerson")
+	public void addPerson(Person person) {
+		for(int i=0;i<10;i++){
+			person.setName("bee"+i);
+			person.setAge(15);
+			personRepository.save(person);
+		}
 
-        List<Person> people = new ArrayList<Person>();
-        Person p1 = new Person("xx",11);
-        Person p2 = new Person("yy",22);
-        Person p3 = new Person("zz",33);
-        people.add(p1);
-        people.add(p2);
-        people.add(p3);
+	}
 
-        model.addAttribute("singlePerson", single);
-        model.addAttribute("people", people);
+	@DeleteMapping(path = "deletePerson")
+	public void deletePerson(Long id) {
+		personRepository.delete(id);
+	}
 
-        return "/index";
-    }
-}
+	/**
+	 * 这里有错误，需要接着修改
+	 * @return
+	 */
+	@RequestMapping("/findAll")
+	public List<Person> getAllPerson() {
+
+		return personRepository.findAll();
+	}
+	
+}  
