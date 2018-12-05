@@ -7,6 +7,9 @@ import java.util.Map;
 
 import com.cwh.springbootMybatis.entity.Person;
 import com.cwh.springbootMybatis.util.CommonUtil;
+import com.cwh.springbootMybatis.util.PageUtil;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +27,17 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	private UserService userService;
-	
+
+	/**
+	 * 这里有错误，需要接着修改
+	 * @return
+	 */
 	@RequestMapping("/getUserInfo")
-    public List<User> getUserInfo() {
-		List<User> user = userService.getUserInfo();
-        System.out.println(user.toString());
-        return user;
+    public PageInfo getUserInfo() {
+		PageUtil.startPage(0);
+		List<User> users = userService.getUserInfo();
+        System.out.println(users.toString());
+        return new PageInfo((Page)users);
     }
 
 	/**
