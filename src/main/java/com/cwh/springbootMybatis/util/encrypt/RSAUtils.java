@@ -1,4 +1,4 @@
-package com.cwh.springbootMybatis.util;
+package com.cwh.springbootMybatis.util.encrypt;
 
 import java.io.ByteArrayOutputStream;
 import java.security.Key;

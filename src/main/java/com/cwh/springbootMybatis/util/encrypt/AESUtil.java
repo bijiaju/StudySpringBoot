@@ -1,4 +1,4 @@
-package com.cwh.springbootMybatis.util;
+package com.cwh.springbootMybatis.util.encrypt;
 
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
@@ -19,7 +19,7 @@ import org.springframework.util.StringUtils;
  */
 
 public class AESUtil {
-    
+
  
     /**
      * 将byte[]转为各种进制的字符串

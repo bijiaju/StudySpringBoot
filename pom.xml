@@ -15,6 +15,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.17.RELEASE</version>
+		<!--<version>2.1.0.RELEASE</version>-->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -167,6 +168,29 @@
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>1.2.10</version>
 		</dependency>
+
+		<!--自动生成代码工具-->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus</artifactId>
+			<version>3.0-RC3</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!--swager-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+
+
+
 	</dependencies>
 
 	<build>
