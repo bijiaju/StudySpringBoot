@@ -1,62 +1,55 @@
 package com.cwh.springbootMybatis.entity;
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-//@Entity
+@Entity//这是为jpa必须配置
 public class Person {
-	/*@Id
-	@GeneratedValue*/
-	private Long id;
-	private String name;
-	private Integer age;
-	private String address;
 
-	public Person(Long id, String name, Integer age, String address) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.age = age;
-		this.address = address;
-	}
-	public Person(String name, Integer age) {
-		super();
-		this.name = name;
-		this.age = age;
-	}
-	public Person() {
-		super();
-	}
-	public Person(String name, Integer age, String address) {
-		super();
-		this.name = name;
-		this.age = age;
-		this.address = address;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Integer getAge() {
-		return age;
-	}
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	@Column(name = "name", nullable = true, length = 20)
+	private String name;
+
+	@Column(name = "age", nullable = true, length = 4)
+	private int age;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+		return "Person{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", age=" + age +
+				'}';
+	}
 }

@@ -22,7 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
   
 @RestController  //注解相当于@ResponseBody ＋ @Controller合在一起的作用
-@RequestMapping("/user")  
+@RequestMapping("/user")
 public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
@@ -39,6 +39,20 @@ public class UserController {
         System.out.println(users.toString());
         return new PageInfo((Page)users);
     }
+
+
+	/**
+	 * findAll
+	 * Hibernate
+	 * @return
+	 */
+	/*@RequestMapping("/getUserInfo")
+	public PageInfo getUserInfo() {
+		PageUtil.startPage(0);
+		List<User> users = userService.getUserInfo();
+		System.out.println(users.toString());
+		return new PageInfo((Page)users);
+	}*/
 
 	/**
 	 * 测试请求
