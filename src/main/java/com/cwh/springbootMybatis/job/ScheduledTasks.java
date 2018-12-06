@@ -1,4 +1,4 @@
-package com.cwh.springbootMybatis.config;
+package com.cwh.springbootMybatis.job;
 
 import com.cwh.springbootMybatis.service.MailService;
 import org.springframework.beans.factory.annotation.Configurable;
