@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
 
 @Entity//这是为jpa必须配置
 public class Person {
@@ -17,6 +18,7 @@ public class Person {
 	@Column(name = "name", nullable = true, length = 20)
 	private String name;
 
+	@Max(35)
 	@Column(name = "age", nullable = true, length = 4)
 	private int age;
 

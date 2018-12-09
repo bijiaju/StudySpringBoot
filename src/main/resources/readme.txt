@@ -12,4 +12,5 @@ Spring Boot与mybatis整合以及开启声明式事务
 9.成功添加的pageHelper分頁
 10.加入swagger
 11.自动生成代码
+12.bean添加注解，表单校验这个功能是属于spring自己的
 -------------------

@@ -8,6 +8,8 @@ import com.cwh.springbootMybatis.service.UserService;
 import com.cwh.springbootMybatis.util.CommonUtil;
 import com.cwh.springbootMybatis.util.PageUtil;
 import com.cwh.springbootMybatis.util.response.CommonResponse;
+import com.cwh.springbootMybatis.util.response.ResponseStatus;
+import com.cwh.springbootMybatis.util.response.ResponseStatusEnum;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -33,12 +35,22 @@ public class PersonController {
 	private PersonMapper personMapper;
 
 	@RequestMapping(path = "/addPerson")
-	public void addPerson(Person person) {
-		for(int i=0;i<10;i++){
+	public CommonResponse addPerson(Person person) {
+		//ResponseStatus status =
+		try{
+			person.setAge(37);//
+			personRepository.save(person);
+		}catch (Exception e){
+			return CommonResponse.failResponse(ResponseStatus.fail("fail"));
+		}
+
+		return CommonResponse.successResponse(null);
+
+		/*for(int i=0;i<10;i++){
 			person.setName("bee"+i);
 			person.setAge(15);
 			personRepository.save(person);
-		}
+		}*/
 
 	}
 
