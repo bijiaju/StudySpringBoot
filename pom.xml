@@ -116,7 +116,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
-			<scope>true</scope>
 		</dependency>
 
 		<!-- 初认识actuator，监控整个应用程序-->

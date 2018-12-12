@@ -61,6 +61,8 @@ public class PersonController {
 
 		PageUtil.startPage(0);
 		List<Person> p =  personMapper.queryAll();
+		System.out.println(p+"---------------------------");
+		//System.out.println(p+"---------------------------");
 		return CommonResponse.successPage(p);
 	}
 	
