@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cwh.springbootMybatis.mapper.UserMapper">
+<mapper namespace="com.bee.springboot.mapper.UserMapper">
  
-  <select id="findUserInfo" resultType="com.cwh.springbootMybatis.entity.User">
+  <select id="findUserInfo" resultType="com.bee.springboot.entity.User">
     select id,name  from user;
   </select>
 
-  <select id="findOneUserInfo" resultType="com.cwh.springbootMybatis.entity.User" parameterType="java.lang.Integer">
+  <select id="findOneUserInfo" resultType="com.bee.springboot.entity.User" parameterType="java.lang.Integer">
     select id,name  from user where id=#{id,jdbcType=INTEGER};
   </select>
 
-  <insert id="addUserInfo" parameterType="com.cwh.springbootMybatis.entity.User">
+  <insert id="addUserInfo" parameterType="com.bee.springboot.entity.User">
   	insert into user (id, name
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}

@@ -1,7 +1,7 @@
 package com.test.service;
 
-import com.cwh.springbootMybatis.Application;
-import com.cwh.springbootMybatis.service.MailService;
+import com.bee.springboot.Application;
+import com.bee.springboot.service.MailService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
