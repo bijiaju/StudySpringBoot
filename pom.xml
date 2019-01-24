@@ -209,6 +209,16 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on
+		加密使用的包
+		-->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15on</artifactId>
+			<version>1.60</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
