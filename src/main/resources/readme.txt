@@ -15,4 +15,8 @@ Spring Boot与mybatis整合以及开启声明式事务
 12.bean添加注解，表单校验这个功能是属于spring自己的
 13.加密-解密
 14. 注解
+15.excel批量导入导出
+16.guava混存Cache，定时缓存
+17.Redis缓存
+加入的步奏： 1.导入pom 2.配置property 3.添加config 4.写uitl 5.Controller引用  目前引用还是有点问题  json序列化的问题
 -------------------

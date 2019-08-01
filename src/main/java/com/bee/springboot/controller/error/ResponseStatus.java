@@ -1,7 +1,9 @@
-package com.zx.sms.common.bean;
+package com.bee.springboot.controller.error;
+
+import com.bee.springboot.util.response.DefaultResponseStatus;
 
 /**
- * @author weichunhe
+ * @author
  * created at 2018/11/16
  */
 public interface ResponseStatus {
@@ -47,7 +49,7 @@ public interface ResponseStatus {
      */
     static ResponseStatus fail(String message) {
         DefaultResponseStatus responseStatus = new DefaultResponseStatus(false, "UNSET", message);
-        return responseStatus;
+        return (ResponseStatus) responseStatus;
     }
     
 }

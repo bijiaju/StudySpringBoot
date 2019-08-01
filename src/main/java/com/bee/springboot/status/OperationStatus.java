@@ -1,10 +1,8 @@
-package com.zx.sms.sale.status;
-
-import com.zx.sms.common.bean.EntityStatus;
+package com.bee.springboot.status;
 
 /**
  *
- * @author weichunhe
+ * @author bee
  * created at 2018/11/22
  */
 public enum OperationStatus implements EntityStatus {

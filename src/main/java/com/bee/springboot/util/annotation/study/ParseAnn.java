@@ -1,4 +1,4 @@
-package com.bee.springboot.util.annotation;
+package com.bee.springboot.util.annotation.study;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -11,7 +11,7 @@ public class ParseAnn {
     public static void main(String[] args){
         //1.加载类
         try{
-            Class c = Class.forName("com.bee.springboot.util.annotation.Child");
+            Class c = Class.forName("com.bee.springboot.util.annotation.study.Child");
             //2.找到类上面的注解
             boolean isExist = c.isAnnotationPresent(Description.class);
             if(isExist){

@@ -1,9 +1,9 @@
-package com.zx.sms.common.bean;
+package com.bee.springboot.util.validation;
 
 import java.io.Serializable;
 
 /**
- * @author weichunhe
+ * @author bee
  * created at 2018/11/18
  */
 public class DefaultResponseStatus implements ResponseStatus , Serializable {

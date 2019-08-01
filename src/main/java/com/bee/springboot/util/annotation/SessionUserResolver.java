@@ -1,10 +1,9 @@
-package com.zx.sms.sale.resolver;
+/*
+package com.bee.springboot.util.annotation;
 
 
-import com.zx.sms.sale.resolver.annotation.AccessPartyId;
-import com.zx.sms.sale.resolver.annotation.SessionUser_;
-import com.zx.sms.security.bean.SessionUser;
-import com.zx.sms.security.util.SecurityUtil;
+i
+import org.apache.catalina.security.SecurityUtil;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -13,11 +12,13 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import javax.servlet.http.HttpServletRequest;
 
+*/
 /**
  * 解析解析当前参数用户
  *
  * @author weichunhe
- */
+ *//*
+
 @Component
 public class SessionUserResolver implements CustomArgumentResolver {
     @Override
@@ -33,3 +34,4 @@ public class SessionUserResolver implements CustomArgumentResolver {
         return user;
     }
 }
+*/

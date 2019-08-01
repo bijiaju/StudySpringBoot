@@ -1,4 +1,4 @@
-package com.zx.sms.sale.resolver;
+package com.bee.springboot.util.annotation;
 
 /**
  * @author weichunhe

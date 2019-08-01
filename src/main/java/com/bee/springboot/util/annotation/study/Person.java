@@ -1,4 +1,4 @@
-package com.bee.springboot.util.annotation;
+package com.bee.springboot.util.annotation.study;
 
 public interface Person {
 

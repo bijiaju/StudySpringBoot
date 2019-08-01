@@ -1,4 +1,5 @@
-package com.bee.springboot.controller;
+/*
+package com.bee.springboot.controller.error;
 
 
 import com.bee.springboot.util.response.CommonResponse;
@@ -24,26 +25,33 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.boot.autoconfigure.web.ErrorController;
 
+
+*/
 /**
  * unify the error response
  * <p>
  * created at 2018/7/12
  *
- * @author weichunhe
- */
+ * @author
+ *//*
+
 @RestController
 //不用任何的配置，只要把这个类放在项目中，Spring能扫描到的地方。就可以实现全局异常的回调。
-@ControllerAdvice(basePackages = {"com.zx.sms.security.controller", "com.zx.sms.sale.controller"})
+@ControllerAdvice(basePackages = {"com.bee.springboot.controller"})
 @RequestMapping("${server.error.path:${error.path:" + ErrorController.ERROR_PATH + "}}")
 @Api(tags = "统一错误处理")
-public class ErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
+public class ErrorController implements ErrorController {
     static Logger LOG = LoggerFactory.getLogger(ErrorController.class);
     static final String ERROR_PATH = "/error";
     static final Map<String, String> ErrorMap = new HashMap<>();
-    /**
+    */
+/**
      * 如果原始异常信息中包含特定的key，就转换为对应的message
-     */
+     *//*
+
     static final Map<String, String> MessageMap = new HashMap<>();
 
     static {
@@ -136,7 +144,7 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
     public CommonResponse handleException(Exception e) {
         String message = ErrorMap.get(e.getClass().getName());
         if (message != null) {
-            return log(ResponseStatus.fail(message), e);
+            return log((DefaultResponseStatus) ResponseStatus.fail(message), e);
         }
         message = e.getMessage();
         if (message != null) {
@@ -170,13 +178,14 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
         return log(status, null);
     }
 
-    private CommonResponse log(ResponseStatus status, Exception e) {
+    private CommonResponse log(DefaultResponseStatus status, Exception e) {
         LOG.error("An Error occurs {}", status, e);
         return CommonResponse.failResponse(status);
     }
 
-    @Override
+    //@Override
     public String getErrorPath() {
         return ERROR_PATH;
     }
 }
+*/

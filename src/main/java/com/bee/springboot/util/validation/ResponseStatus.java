@@ -1,7 +1,7 @@
-package com.zx.sms.common.bean;
+package com.bee.springboot.util.validation;
 
 /**
- * @author weichunhe
+ * @author bee
  * created at 2018/11/16
  */
 public interface ResponseStatus {

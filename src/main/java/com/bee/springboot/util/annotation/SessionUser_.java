@@ -1,6 +1,4 @@
-package com.zx.sms.sale.resolver.annotation;
-
-import springfox.documentation.annotations.ApiIgnore;
+package com.bee.springboot.util.annotation;
 
 import java.lang.annotation.*;
 

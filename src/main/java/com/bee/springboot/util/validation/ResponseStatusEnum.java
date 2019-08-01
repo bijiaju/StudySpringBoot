@@ -1,13 +1,9 @@
-package com.zx.sms.common.bean;
+package com.bee.springboot.util.validation;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * @author weichunhe
+ * @author bee
  * created at 2018/11/16
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)

@@ -1,10 +1,10 @@
-package com.zx.sms.common.bean;
+package com.bee.springboot.status;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * 实体类状态
- * @author weichunhe
+ * @author bee
  * created at 2018/11/22
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)

@@ -1,9 +1,8 @@
-package com.zx.sms.sale.resolver;
+/*
+package com.bee.springboot.util.annotation;
 
 
-import com.zx.sms.sale.resolver.annotation.AccessPartyId;
-import com.zx.sms.security.bean.SessionUser;
-import com.zx.sms.security.util.SecurityUtil;
+
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -13,11 +12,13 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import javax.servlet.http.HttpServletRequest;
 
+*/
 /**
  * 解析接入方编号参数
  *
  * @author weichunhe
- */
+ *//*
+
 @Component
 public class AccessPartyIdResolver implements CustomArgumentResolver {
     @Override
@@ -53,3 +54,4 @@ public class AccessPartyIdResolver implements CustomArgumentResolver {
         return null;
     }
 }
+*/

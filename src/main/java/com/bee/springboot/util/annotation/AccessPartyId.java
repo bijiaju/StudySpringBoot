@@ -1,6 +1,5 @@
-package com.zx.sms.sale.resolver.annotation;
+package com.bee.springboot.util.annotation;
 
-import io.swagger.annotations.ApiParam;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.lang.annotation.*;
@@ -8,7 +7,7 @@ import java.lang.annotation.*;
 /**
  * 注入接入方编号
  *
- * @author weichunhe
+ * @author bee
  * created at 2018/11/28
  */
 @Target(ElementType.PARAMETER)

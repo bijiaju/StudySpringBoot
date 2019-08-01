@@ -1,4 +1,4 @@
-package com.bee.springboot.util.annotation;
+package com.bee.springboot.util.annotation.study;
 
 @Description(desc = "i am class annotation", author = "bee")
 public class Child implements Person {
