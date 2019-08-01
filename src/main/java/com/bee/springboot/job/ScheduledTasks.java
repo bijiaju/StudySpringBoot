@@ -3,7 +3,6 @@ package com.bee.springboot.job;
 import com.bee.springboot.service.MailService;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 
@@ -13,7 +12,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -90,12 +88,12 @@ public class ScheduledTasks{
         sendAttachmentMail();
     }*/   //
 
-    @Scheduled(cron = "* * * * * * ")//00 00 6,12,15,20 * * ?
+   /* @Scheduled(cron = "* * * * * * ")//00 00 6,12,15,20 * * ?
     public void reportCurrentByCron(){
         System.out.println ("执行时间： " + dateFormat ().format (new Date()));
        // sendAttachmentMail();
 
-    }
+    }*/
 
 
     private SimpleDateFormat dateFormat(){

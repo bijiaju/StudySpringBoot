@@ -210,7 +210,7 @@ public class UserController {
 	@RequestMapping("/addUserInfo")
     public String addUserInfo() {
 		User user = new User();
-		user.setId(3L);
+		user.setId(5L);
 		user.setName("cwh");
 		userService.insert(user);
         return "success:"+user.toString();
