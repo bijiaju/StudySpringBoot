@@ -67,20 +67,20 @@
                     </exclusions>
                 </dependency>
 	-->
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-log4j</artifactId>
-                </dependency>
-                <!--替代jsp的模板-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>2.1.2.RELEASE</version>
+        </dependency>
+
+        <!--替代jsp的模板-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
+
 
 		<!--mail邮件-->
 		<dependency>
@@ -130,11 +130,11 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<!-- 初认识导入Http快速访问-->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.3.1</version>
-		</dependency>
+		</dependency>-->
 
 		<!-- 导入httpclient用来请求 -->
 		<dependency>
@@ -210,29 +210,38 @@
 
 
 		<!--通用的工具包-->
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
 		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on
 		加密使用的包
 		-->
-		<dependency>
+	<!--	<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk15on</artifactId>
 			<version>1.60</version>
-		</dependency>
+		</dependency>-->
 
 		<!-- excel  -->
-		<dependency>
+		<!--<dependency>
 			<groupId>net.sourceforge.jexcelapi</groupId>
 			<artifactId>jxl</artifactId>
 			<version>2.6.12</version>
-		</dependency>
+		</dependency>-->
 
+        <!--Spring Boot 整合 RocketMq-->
+        <dependency>
+            <groupId>com.alibaba.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>3.2.6</version>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>
@@ -244,7 +253,7 @@
 			<plugin>
 				<groupId>org.mybatis.generator</groupId>
 				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.2</version>
+				<version>1.3.5</version>
 				<configuration>
 					<configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
 					<overwrite>true</overwrite>

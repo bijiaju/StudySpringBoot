@@ -1,3 +1,4 @@
+/*
 package com.bee.springboot.util.encrypt.des;
 
 
@@ -14,11 +15,13 @@ import sun.misc.BASE64Encoder;
 import java.security.MessageDigest;
 import java.security.Security;
 
+*/
 /**
  * MD5
  * PS: jdk只提供了md5、2没有提供md4；使用cc实现md5
  * PS: 通过cc可以简化一些操作，cc提供md4的实现，
- */
+ *//*
+
 public class BeeMD {
 
     public static final String src = "D撒旦法sddes";
@@ -58,9 +61,11 @@ public class BeeMD {
 
     }
 
-    /**
+    */
+/**
      * 通过引入BC的maven实现的
-     */
+     *//*
+
     public static void bcMD4() {
 
         try {
@@ -69,11 +74,13 @@ public class BeeMD {
             byte[] md4Bytes = md.digest(src.getBytes());
             System.out.println("BC md4: " +  Hex.encodeHexString(md4Bytes));
 
-           /* Digest digest = new MD4Digest();
+           */
+/* Digest digest = new MD4Digest();
             digest.update(src.getBytes(),0,src.getBytes().length);
             byte[] md4Bytes = new byte[digest.getDigestSize()];
             digest.doFinal(md4Bytes,0);
-            System.out.println("BC md4: " + org.bouncycastle.util.encoders.Hex.toHexString(md4Bytes));*/
+            System.out.println("BC md4: " + org.bouncycastle.util.encoders.Hex.toHexString(md4Bytes));*//*
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -102,4 +109,4 @@ public class BeeMD {
         System.out.println("CC md2: " + DigestUtils.md2Hex(src.getBytes()));
     }
 
-}
+}*/

@@ -3,6 +3,7 @@ package com.bee.springboot.service.impl;
 import java.util.List;
 //import java.util.logging.Logger;
 
+import com.bee.springboot.annotation.HandlingTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService{
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    //@HandlingTime
 	@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private UserMapper userMapper;

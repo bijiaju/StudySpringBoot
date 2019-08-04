@@ -1,12 +1,13 @@
 package com.bee.springboot.controller;
 
+import com.bee.springboot.annotation.HandlingTime;
 import com.bee.springboot.entity.User;
 import com.bee.springboot.service.UserService;
 import com.bee.springboot.util.CommonUtil;
-import com.bee.springboot.util.ExcelUtil;
+//import com.bee.springboot.util.ExcelUtil;
 import com.bee.springboot.util.PageUtil;
 import com.bee.springboot.util.RedisUtil;
-import com.bee.springboot.util.exception.ExcelException;
+//import com.bee.springboot.util.exception.ExcelException;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
@@ -45,7 +46,7 @@ public class UserController {
 		}
 	};
 
-	@RequestMapping(value = "/excelTemplate", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/excelTemplate", method = RequestMethod.GET)
 	public Map<String,Object> exportExcel(HttpServletResponse response) {
 		Map<String,Object> retMap = new HashMap<>();
 		try {
@@ -59,7 +60,7 @@ public class UserController {
 			return CommonUtil.setReturnMap("0","下载端口excel模板失败",retMap);//Result.error("："+e.getMessage());
 		}
 		//return null;
-	}
+	}*/
 
 
 /*	@ResponseBody
@@ -198,6 +199,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/testResult")
+	@HandlingTime
 	public Map<String,Object> testResult() {
 		logger.info("Start...");
 
@@ -207,10 +209,11 @@ public class UserController {
 		return CommonUtil.setReturnMap("0","请求成功",retMap);
 	}
 
+	@HandlingTime
 	@RequestMapping("/addUserInfo")
     public String addUserInfo() {
 		User user = new User();
-		user.setId(5L);
+		user.setId(22L);
 		user.setName("cwh");
 		userService.insert(user);
         return "success:"+user.toString();

@@ -1,3 +1,4 @@
+/*
 package com.bee.springboot.util.encrypt.des;
 
 
@@ -12,9 +13,11 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import java.security.MessageDigest;
 import java.security.Security;
 
+*/
 /**
  * SHA
- */
+ *//*
+
 public class BeeSHA {
 
     public static final String src = "D撒旦法sddes";
@@ -42,9 +45,11 @@ public class BeeSHA {
     }
 
 
-    /**
+    */
+/**
      * 通过引入BC的maven实现的
-     */
+     *//*
+
     public static void bcSHA1() {
         try {
             Digest digest = new SHA1Digest();
@@ -84,4 +89,4 @@ public class BeeSHA {
         System.out.println("CC ccSHA2: " + DigestUtils.sha1Hex(src));
     }
 
-}
+}*/
