@@ -19,15 +19,12 @@ public class FilterConfig {
     public FilterRegistrationBean filterRegistrationBean() {
 
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-
         CharacterFilter filter = new CharacterFilter();
         registrationBean.setFilter(filter);
-
         //设置过滤器拦截请求
         List<String> urls = new ArrayList<>();
         urls.add("/*");
         registrationBean.setUrlPatterns(urls);
-
         return registrationBean;
     }
 }

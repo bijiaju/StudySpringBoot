@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 
 @Component
 @Configurable
-@EnableScheduling
+@EnableScheduling//开启定时任务
 public class ScheduledTasks{
 
     public static void main(String[] args) throws Exception {

@@ -1,14 +1,20 @@
 package com.bee.springboot.controller;
 
+import com.bee.springboot.entity.TestValidateBean;
 import com.bee.springboot.entity.User;
+import com.bee.springboot.entity.constrains.MiniValidation;
 import com.bee.springboot.service.UserService;
 import com.bee.springboot.util.CommonUtil;
 import com.bee.springboot.util.ExcelUtil;
 import com.bee.springboot.util.PageUtil;
 import com.bee.springboot.util.RedisUtil;
 import com.bee.springboot.util.exception.ExcelException;
+import com.bee.springboot.util.validation.ResponseStatusEnum;
+import com.bee.springboot.util.validation.ValidateUtil;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +28,7 @@ import java.util.*;
 
 @RestController  //注解相当于@ResponseBody ＋ @Controller合在一起的作用
 @RequestMapping("/user")
+@Api(tags = "测试swager")
 public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
@@ -167,16 +174,45 @@ public class UserController {
 		}
 		return null;
 	}*/
+
+	/**
+	 * 这里有错误，需要接着修改
+	 * @return
+	 */
+	@RequestMapping("/getValidation")
+	public PageInfo getValidation() {
+
+		PageUtil.startPage(0);
+		List<User> users = userService.getUserInfo();
+		System.out.println(users.toString());
+		return new PageInfo((Page)users);
+	}
+
 	/**
 	 * 这里有错误，需要接着修改
 	 * @return
 	 */
 	@RequestMapping("/getUserInfo")
-    public PageInfo getUserInfo() {
-		PageUtil.startPage(0);
+    public Map<String,Object> getUserInfo() {
+		logger.info("Start...");
+		TestValidateBean tvb = new TestValidateBean();
+		tvb.setPhone("15903991821");
+		tvb.setDealtime("20190611121212");
+		tvb.setProvince("021");
+		tvb.setContent("xxxxxx");
+		tvb.setServicecode("10010");
+		String errorMsg = ValidateUtil.validateGroup(tvb, MiniValidation.class);//后面的MiniValidation.class只是为了分组校验
+		Map<String,Object> retMap = new HashMap<>();
+		if(StringUtils.isNotEmpty(errorMsg)){
+			//return  HNRespStatus.PARAMERR;
+			System.out.println("出错了:: "+errorMsg);
+			return CommonUtil.setReturnMap("0",ResponseStatusEnum.INVALID_PARAM.getMessage(),retMap);
+		}
+
+
 		List<User> users = userService.getUserInfo();
-        System.out.println(users.toString());
-        return new PageInfo((Page)users);
+		retMap.put("beans",users);
+		return CommonUtil.setReturnMap("0","请求成功",retMap);
     }
 
 
@@ -210,8 +246,9 @@ public class UserController {
 	@RequestMapping("/addUserInfo")
     public String addUserInfo() {
 		User user = new User();
-		user.setId(5L);
+		user.setId(7L);
 		user.setName("cwh");
+		user.setCreateDate(new Date());
 		userService.insert(user);
         return "success:"+user.toString();
     }

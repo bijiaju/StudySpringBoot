@@ -1,8 +1,8 @@
-package com.cmos.common.validator.constraints;
+package com.bee.springboot.entity.constrains;
 
 /**
  * 更新时校验
- * @author weichunhe
+ * @author bee
  * created at 2018/11/21
  */
 public interface UpdateValidation extends MiniValidation {

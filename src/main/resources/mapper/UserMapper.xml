@@ -3,7 +3,7 @@
 <mapper namespace="com.bee.springboot.mapper.UserMapper">
  
   <select id="findUserInfo" resultType="com.bee.springboot.entity.User">
-    select id,name  from user;
+    select id,name,createDate from user;
   </select>
 
   <select id="findOneUserInfo" resultType="com.bee.springboot.entity.User" parameterType="java.lang.Integer">
@@ -11,9 +11,9 @@
   </select>
 
   <insert id="addUserInfo" parameterType="com.bee.springboot.entity.User">
-  	insert into user (id, name
+  	insert into user (id, name ,createDate
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{createDate}
       )
   </insert>
   <delete id="delUserInfo" parameterType="java.lang.Integer">

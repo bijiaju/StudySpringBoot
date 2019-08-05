@@ -18,7 +18,10 @@ public enum ResponseStatusEnum implements ResponseStatus {
     USER_VERIFYCODE_LIMIIT(false,"请等待一分钟后获取验证码"),
     OPERATION_IN_ERROR_STATUS(false,"当前状态不允许此操作"),
     FILE_TYPE_ERROR(false,"文件类型不正确"),
+    INVALID_PARAM(false,"无效参数"),
     FILE_TOO_BIG(false,"超过文件最大限制");
+    //FILE_TOO_BIG(false,"超过文件最大限制");
+
 
 
     private boolean success;

@@ -1,10 +1,20 @@
 package com.bee.springboot.entity;
 
-import java.io.Serializable;  
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * JsonFormat固定json输出的形式
+ */
 public class User implements Serializable {  
     private Long id;  
-    private String name;  
+    private String name;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone="GMT+8")
+    private Date createDate;//固定json，  Time输出的形式
+
   
     public Long getId() {  
         return id;  
@@ -16,9 +26,17 @@ public class User implements Serializable {
   
     public String getName() {  
         return name;  
-    }  
-  
-    public void setName(String name) {  
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public void setName(String name) {
         this.name = name;  
     }  
   

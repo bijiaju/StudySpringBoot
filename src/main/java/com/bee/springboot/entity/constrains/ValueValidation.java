@@ -1,7 +1,7 @@
-package com.cmos.common.validator.constraints;
+package com.bee.springboot.entity.constrains;
 
 /**
- * @author weichunhe
+ * @author bee
  * created at 2018/12/19
  */
 public interface ValueValidation {
