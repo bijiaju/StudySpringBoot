@@ -63,4 +63,10 @@ public class UserServiceImpl implements UserService{
         System.out.println("为id、key为:"+user.getId()+"数据做了缓存");
         return user;
     }
+
+    @Override
+    public int dynaDeleteList(List<Integer> ids) {
+        int count = userMapper.dynaDeleteList(ids);
+        return count;
+    }
 }

@@ -10,4 +10,7 @@ public interface UserService {
     public void insert(User user);
 
     public User selectUserById(int id);
+
+    int dynaDeleteList(List<Integer> ids);
+
 }

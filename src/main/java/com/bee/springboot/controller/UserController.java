@@ -235,5 +235,23 @@ public class UserController {
 		User user = userService.selectUserById(id);
 		return "success:"+user.toString();
 	}
+
+
+	/**
+	 * http://localhost:8882/user/deleteUserLists
+	 * 批量删除
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/deleteUserLists")
+	public String deleteUserLists(@RequestParam(value = "id", required = false) Integer id) {
+
+		List<Integer> ids = new ArrayList<Integer>();
+		ids.add(6);
+		ids.add(8);
+		ids.add(9);
+		int count = userService.dynaDeleteList(ids);
+		return "success: 删除"+count;
+	}
 	
 }  

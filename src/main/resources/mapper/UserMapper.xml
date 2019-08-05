@@ -19,5 +19,27 @@
   <delete id="delUserInfo" parameterType="java.lang.Integer">
    delete from user where id = #{id,jdbcType=INTEGER}
   </delete>
+
+  <delete id="dynaDeleteList">
+    delete from user where id in
+    <foreach collection="list" open="(" close=")" separator="," item="ids">
+      #{ids}
+    </foreach>
+  </delete>
+
+
+  <!--<delete id="dynaDeleteArray">
+    delete from students where students_id in
+    &lt;!&ndash; foreach用于迭代数组元素
+         open表示开始符号
+         close表示结束符合
+         separator表示元素间的分隔符
+         item表示迭代的数组，属性值可以任意，但提倡与方法的数组名相同
+         #{ids}表示数组中的每个元素值
+     &ndash;&gt;
+    <foreach collection="array" open="(" close=")" separator="," item="ids">
+      #{ids}
+    </foreach>
+  </delete>-->
  
 </mapper>
