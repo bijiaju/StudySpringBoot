@@ -1,3 +1,4 @@
+/*
 package com.bee.springboot.util.encrypt.des;
 
 
@@ -16,9 +17,11 @@ package com.bee.springboot.util.encrypt.des;
         import javax.crypto.spec.SecretKeySpec;
         import java.security.MessageDigest;
 
+*/
 /**
  * mac
- */
+ *//*
+
 public class BeeHmac {
 
     public static final String src = "D撒旦法sddes";
@@ -51,9 +54,11 @@ public class BeeHmac {
     }
 
 
-    /**
+    */
+/**
      * 通过引入BC的maven实现的
-     */
+     *//*
+
     public static void bcHmacMD5() {
         try {
             HMac hmac = new HMac(new MD5Digest());
@@ -70,4 +75,4 @@ public class BeeHmac {
     }
 
 
-}
+}*/

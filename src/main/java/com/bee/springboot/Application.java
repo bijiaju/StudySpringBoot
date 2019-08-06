@@ -1,8 +1,5 @@
 package com.bee.springboot;
 
-import javax.servlet.MultipartConfigElement;
-import javax.sql.DataSource;
-
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,10 +9,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+import javax.servlet.MultipartConfigElement;
+import javax.sql.DataSource;
 
 @SpringBootApplication //核心注解，主要目的是开启自动注解，源码内部是组合配置
 @MapperScan("com.cwh.springbootMybatis.mapper")//添加这个，就不用在dao添加mapper注解了
 @EnableCaching//开启缓存
+@EnableAspectJAutoProxy//开启aop
 public class Application implements CommandLineRunner{
 
 	//@Qualifier("")

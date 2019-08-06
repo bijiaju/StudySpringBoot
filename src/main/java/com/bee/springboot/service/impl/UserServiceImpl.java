@@ -1,19 +1,24 @@
 package com.bee.springboot.service.impl;
 
-import java.util.List;
-//import java.util.logging.Logger;
-
+import com.bee.springboot.annotation.HandlingTime;
+import com.bee.springboot.entity.Person;
+import com.bee.springboot.entity.User;
+import com.bee.springboot.mapper.PersonMapper;
+import com.bee.springboot.mapper.UserMapper;
+import com.bee.springboot.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bee.springboot.entity.User;
-import com.bee.springboot.mapper.UserMapper;
-import com.bee.springboot.service.UserService;
+import javax.annotation.Resource;
+import java.util.List;
+
+//import java.util.logging.Logger;
 
 /**
  * 1.内部测试了缓存功能
@@ -23,10 +28,15 @@ public class UserServiceImpl implements UserService{
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    //@HandlingTime
 	@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private UserMapper userMapper;
-    @Cacheable(value = "user1",key="methodName")//3
+
+	@Resource
+    private PersonMapper personMapper;
+
+    @HandlingTime
     public List<User> getUserInfo(){
         logger.info("开始查询数据");
         List<User> result = userMapper.findUserInfo();
@@ -35,14 +45,18 @@ public class UserServiceImpl implements UserService{
     }
 
     //@Transactional开启事务
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED	)
     @CachePut(value = "user")
 	public void insert(User user) {
-		int count = userMapper.addUserInfo(user);
+        Person person = new Person();
+        person.setAge(11);
+        person.setName("asdfads");
+        personMapper.addPersonInfo(person);
+
+        //int i=1/0;
+
+        int count = userMapper.addUserInfo(user);
         System.out.println("为id、key为:"+user.getId()+"数据做了缓存");
-	/*	int i=1/0;
-		userMapper.addUserInfo(user);*/
-		
 	}
 
     /**

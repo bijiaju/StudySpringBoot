@@ -1,16 +1,22 @@
 package com.bee.springboot.controller;
 
+
 import com.bee.springboot.entity.TestValidateBean;
+import com.bee.springboot.annotation.HandlingTime;
 import com.bee.springboot.entity.User;
 import com.bee.springboot.entity.constrains.MiniValidation;
 import com.bee.springboot.service.UserService;
 import com.bee.springboot.util.CommonUtil;
-import com.bee.springboot.util.ExcelUtil;
+//import com.bee.springboot.util.ExcelUtil;
 import com.bee.springboot.util.PageUtil;
 import com.bee.springboot.util.RedisUtil;
-import com.bee.springboot.util.exception.ExcelException;
+
+//import com.bee.springboot.util.exception.ExcelException;
 import com.bee.springboot.util.validation.ResponseStatusEnum;
 import com.bee.springboot.util.validation.ValidateUtil;
+
+//import com.bee.springboot.util.exception.ExcelException;
+
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -52,7 +58,7 @@ public class UserController {
 		}
 	};
 
-	@RequestMapping(value = "/excelTemplate", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/excelTemplate", method = RequestMethod.GET)
 	public Map<String,Object> exportExcel(HttpServletResponse response) {
 		Map<String,Object> retMap = new HashMap<>();
 		try {
@@ -66,7 +72,7 @@ public class UserController {
 			return CommonUtil.setReturnMap("0","下载端口excel模板失败",retMap);//Result.error("："+e.getMessage());
 		}
 		//return null;
-	}
+	}*/
 
 
 /*	@ResponseBody
@@ -179,7 +185,7 @@ public class UserController {
 	 * 这里有错误，需要接着修改
 	 * @return
 	 */
-	@RequestMapping("/getValidation")
+	@RequestMapping("/getUserInfo")
 	public PageInfo getValidation() {
 
 		PageUtil.startPage(0);
@@ -192,7 +198,7 @@ public class UserController {
 	 * 这里有错误，需要接着修改
 	 * @return
 	 */
-	@RequestMapping("/getUserInfo")
+	@RequestMapping("/getValidation")
     public Map<String,Object> getUserInfo() {
 		logger.info("Start...");
 		TestValidateBean tvb = new TestValidateBean();
@@ -243,10 +249,11 @@ public class UserController {
 		return CommonUtil.setReturnMap("0","请求成功",retMap);
 	}
 
+	@HandlingTime
 	@RequestMapping("/addUserInfo")
     public String addUserInfo() {
 		User user = new User();
-		user.setId(7L);
+
 		user.setName("cwh");
 		user.setCreateDate(new Date());
 		userService.insert(user);

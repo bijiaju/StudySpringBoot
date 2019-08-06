@@ -14,7 +14,7 @@ Spring Boot与mybatis整合以及开启声明式事务
 11.自动生成代码
 12.bean添加注解，表单校验这个功能是属于spring自己的
 13.加密-解密
-14. 注解
+14. springboot实现事务，不用像spring中那么复杂，只需要在service层加入 Transiation（也是基于aop）就可以了
 15.excel批量导入导出
 16.guava混存Cache，定时缓存
 17.Redis缓存
@@ -25,4 +25,5 @@ a.首先是对bean进行配置：通过javax.validation.constraints下的注解�
 b.com.bee.springboot.util.validation;查看 校验 方法
 c. Controller     http://localhost:8882/user/getUserInfo调用实现
 20. JsonFormat 对 日期格式的修改，响应成自己的效果 json
--------------------
+21.添加了 RocketMq,并测试了一下，有时候可以成功，但是总体还是没有理解透
+22.aop自定义注解

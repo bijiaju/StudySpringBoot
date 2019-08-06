@@ -1,3 +1,4 @@
+/*
 package com.bee.springboot.util;
 
 import com.bee.springboot.util.exception.ExcelException;
@@ -15,17 +16,20 @@ import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+*/
 /**
  * @author     : bee
  * @group      :
  * @Date       : 2019-1-2 下午9:13:21
  * @Comments   : 导入导出Excel工具类
  * @Version    : 1.0.0
- */
+ *//*
+
 
 public class ExcelUtil  {
 
-    /**
+    */
+/**
      * @MethodName  : listToExcel
      * @Description : 导出Excel（可以导出到本地文件系统，也可以导出到浏览器，可自定义工作表大小）
      * @param list      数据源
@@ -37,7 +41,8 @@ public class ExcelUtil  {
      * @param sheetSize 每个工作表中记录的最大个数
      * @param out       导出流
      * @throws ExcelException
-     */
+     *//*
+
     public static <T>  void   listToExcel (
             List<T> list ,
             LinkedHashMap<String,String> fieldMap,
@@ -97,14 +102,16 @@ public class ExcelUtil  {
 
     }
 
-    /**
+    */
+/**
      * @MethodName  : listToExcel
      * @Description : 导出Excel（可以导出到本地文件系统，也可以导出到浏览器，工作表大小为2003支持的最大值）
      * @param list      数据源
      * @param fieldMap      类的英文属性和Excel中的中文列名的对应关系
      * @param out       导出流
      * @throws ExcelException
-     */
+     *//*
+
     public static  <T>  void   listToExcel (
             List<T> list ,
             LinkedHashMap<String,String> fieldMap,
@@ -117,7 +124,8 @@ public class ExcelUtil  {
     }
 
 
-    /**
+    */
+/**
      * @MethodName  : listToExcel
      * @Description : 导出Excel（导出到浏览器，可以自定义工作表的大小）
      * @param list      数据源
@@ -125,7 +133,8 @@ public class ExcelUtil  {
      * @param sheetSize    每个工作表中记录的最大个数
      * @param response  使用response可以导出到浏览器
      * @throws ExcelException
-     */
+     *//*
+
     public static  <T>  void   listToExcel (
             List<T> list ,
             LinkedHashMap<String,String> fieldMap,
@@ -163,14 +172,16 @@ public class ExcelUtil  {
     }
 
 
-    /**
+    */
+/**
      * @MethodName  : listToExcel
      * @Description : 导出Excel（导出到浏览器，工作表的大小是2003支持的最大值）
      * @param list      数据源
      * @param fieldMap      类的英文属性和Excel中的中文列名的对应关系
      * @param response  使用response可以导出到浏览器
      * @throws ExcelException
-     */
+     *//*
+
     public static <T>  void   listToExcel (
             List<T> list ,
             LinkedHashMap<String,String> fieldMap,
@@ -181,7 +192,8 @@ public class ExcelUtil  {
         listToExcel(list, fieldMap, sheetName, 65535, response);
     }
 
-    /**
+    */
+/**
      * @MethodName          : excelToList
      * @Description             : 将Excel转化为List
      * @param in                    ：承载着Excel的输入流
@@ -190,7 +202,8 @@ public class ExcelUtil  {
      * @param uniqueFields  ：指定业务主键组合（即复合主键），这些列的组合不能重复
      * @return                      ：List
      * @throws ExcelException
-     */
+     *//*
+
     public static <T>  List<T>  excelToList(
             InputStream in,
             Class<T> entityClass,
@@ -344,14 +357,18 @@ public class ExcelUtil  {
 
 
 
-    /*<-------------------------辅助的私有方法----------------------------------------------->*/
-    /**
+    */
+/*<-------------------------辅助的私有方法----------------------------------------------->*//*
+
+    */
+/**
      * @MethodName  : getFieldValueByName
      * @Description : 根据字段名获取字段值
      * @param fieldName 字段名
      * @param o 对象
      * @return  字段值
-     */
+     *//*
+
     private static  Object getFieldValueByName(String fieldName, Object o) throws Exception{//NOSONAR
 
         Object value=null;//NOSONAR
@@ -367,13 +384,15 @@ public class ExcelUtil  {
         return value;
     }
 
-    /**
+    */
+/**
      * @MethodName  : getFieldByName
      * @Description : 根据字段名获取字段
      * @param fieldName 字段名
      * @param clazz 包含该字段的类
      * @return 字段
-     */
+     *//*
+
     private static Field getFieldByName(String fieldName, Class<?>  clazz){
         //拿到本类的所有字段
         Field[] selfFields=clazz.getDeclaredFields();
@@ -397,7 +416,8 @@ public class ExcelUtil  {
 
 
 
-    /**
+    */
+/**
      * @MethodName  : getFieldValueByNameSequence
      * @Description :
      * 根据带路径或不带路径的属性名获取属性值
@@ -407,7 +427,8 @@ public class ExcelUtil  {
      * @param o 对象
      * @return  属性值
      * @throws Exception
-     */
+     *//*
+
     private static  Object getFieldValueByNameSequence(String fieldNameSequence, Object o) throws Exception{//NOSONAR
 
         Object value=null;//NOSONAR
@@ -427,13 +448,15 @@ public class ExcelUtil  {
     }
 
 
-    /**
+    */
+/**
      * @MethodName  : setFieldValueByName
      * @Description : 根据字段名给对象的字段赋值
      * @param fieldName  字段名
      * @param fieldValue    字段值
      * @param o 对象
-     */
+     *//*
+
     private static void setFieldValueByName(String fieldName,Object fieldValue,Object o) throws Exception{//NOSONAR
 
         Field field=getFieldByName(fieldName, o.getClass());
@@ -476,11 +499,13 @@ public class ExcelUtil  {
     }
 
 
-    /**
+    */
+/**
      * @MethodName  : setColumnAutoSize
      * @Description : 设置工作表自动列宽和首行加粗
      * @param ws
-     */
+     *//*
+
     private static void setColumnAutoSize(WritableSheet ws, int extraWith){
         //获取本列的最宽单元格的宽度
         for(int i=0;i<ws.getColumns();i++){
@@ -498,7 +523,8 @@ public class ExcelUtil  {
 
     }
 
-    /**
+    */
+/**
      * @MethodName  : fillSheet
      * @Description : 向工作表中填充数据
      * @param sheet     工作表
@@ -506,7 +532,8 @@ public class ExcelUtil  {
      * @param fieldMap 中英文字段对应关系的Map
      * @param firstIndex    开始索引
      * @param lastIndex 结束索引
-     */
+     *//*
+
     private static <T> void fillSheet(
             WritableSheet sheet,
             List<T> list,
@@ -551,4 +578,4 @@ public class ExcelUtil  {
         setColumnAutoSize(sheet, 5);
     }
 
-}
+}*/
