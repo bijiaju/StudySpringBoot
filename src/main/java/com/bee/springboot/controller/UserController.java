@@ -1,22 +1,16 @@
 package com.bee.springboot.controller;
 
 
-import com.bee.springboot.entity.TestValidateBean;
 import com.bee.springboot.annotation.HandlingTime;
+import com.bee.springboot.entity.TestValidateBean;
 import com.bee.springboot.entity.User;
 import com.bee.springboot.entity.constrains.MiniValidation;
 import com.bee.springboot.service.UserService;
 import com.bee.springboot.util.CommonUtil;
-//import com.bee.springboot.util.ExcelUtil;
 import com.bee.springboot.util.PageUtil;
 import com.bee.springboot.util.RedisUtil;
-
-//import com.bee.springboot.util.exception.ExcelException;
 import com.bee.springboot.util.validation.ResponseStatusEnum;
 import com.bee.springboot.util.validation.ValidateUtil;
-
-//import com.bee.springboot.util.exception.ExcelException;
-
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -25,12 +19,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.*;
+
+//import com.bee.springboot.util.ExcelUtil;
+//import com.bee.springboot.util.exception.ExcelException;
+//import com.bee.springboot.util.exception.ExcelException;
 
 @RestController  //注解相当于@ResponseBody ＋ @Controller合在一起的作用
 @RequestMapping("/user")
@@ -275,6 +271,24 @@ public class UserController {
 
 		User user = userService.selectUserById(id);
 		return "success:"+user.toString();
+	}
+
+
+	/**
+	 * http://localhost:8882/user/deleteUserLists
+	 * 批量删除
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/deleteUserLists")
+	public String deleteUserLists(@RequestParam(value = "id", required = false) Integer id) {
+
+		List<Integer> ids = new ArrayList<Integer>();
+		ids.add(6);
+		ids.add(8);
+		ids.add(9);
+		int count = userService.dynaDeleteList(ids);
+		return "success: 删除"+count;
 	}
 	
 }  

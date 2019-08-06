@@ -27,3 +27,6 @@ c. Controller     http://localhost:8882/user/getUserInfo调用实现
 20. JsonFormat 对 日期格式的修改，响应成自己的效果 json
 21.添加了 RocketMq,并测试了一下，有时候可以成功，但是总体还是没有理解透
 22.aop自定义注解
+21.添加了 RocketMq,并测试了一下，但是总体还是没有理解透
+22.aop自定义注解
+23.添加springmvc的list删除模式

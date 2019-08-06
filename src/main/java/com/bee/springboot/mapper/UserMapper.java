@@ -13,4 +13,5 @@ public interface UserMapper {
 	public int delUserInfo(int id);
 	public User findOneUserInfo(int id);
 
+	int dynaDeleteList(List<Integer> ids);
 }
