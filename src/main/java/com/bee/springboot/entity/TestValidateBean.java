@@ -45,7 +45,7 @@ public class TestValidateBean {
     @NotEmpty(message = "xxx原文不能为空", groups = MiniValidation.class)
     private String content;
 
-    @ApiModelProperty(value = "数据类型，sms：10086类短信原文其他类型根据需要添加")
+    @ApiModelProperty(value = "数据类型，sms：xxxx类xx原文其他类型根据需要添加")
     @Pattern(regexp = "sms", message = "数据类型不正确", groups = MiniValidation.class)
     private String datatype;
 

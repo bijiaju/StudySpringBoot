@@ -1,21 +1,34 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
+package com.bee.springboot.util.redis;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 /**
  * Redis工具类
- * @author ZENG.XIAO.YAN
- * @date   2018年6月7日
+ * @author  bee
+ * @date   2019年6月1日
  */
 @Component
-public final class RedisUtil {
+public final class RedisUtil1 {
+
+
+    /*public static void main(String[] args){   不可这么引用
+        RedisUtil re = new RedisUtil();
+        boolean hasKey = re.hasKey("str");
+        System.out.println("hasKey:"+hasKey);
+    }*/
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
     // =============================common============================
+   /* RedisConnection connection = redisTemplate.getConnectionFactory().getConnection();
+    RedisClusterConnection clusterConnection = redisTemplate.getConnectionFactory().getClusterConnection();
+    // redisTemplate.setc*/
     /**
      * 指定缓存失效时间
      * @param key 键
@@ -23,6 +36,7 @@ public final class RedisUtil {
      * @return
      */
     public boolean expire(String key, long time) {
+
         try {
             if (time > 0) {
                 redisTemplate.expire(key, time, TimeUnit.SECONDS);
@@ -396,7 +410,6 @@ public final class RedisUtil {
      * 将list放入缓存
      * @param key 键
      * @param value 值
-     * @param time 时间(秒)
      * @return
      */
     public boolean lSet(String key, Object value) {
@@ -430,7 +443,6 @@ public final class RedisUtil {
      * 将list放入缓存
      * @param key 键
      * @param value 值
-     * @param time 时间(秒)
      * @return
      */
     public boolean lSet(String key, List<Object> value) {
@@ -494,3 +506,4 @@ public final class RedisUtil {
         }
     }
 }
+

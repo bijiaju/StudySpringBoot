@@ -12,18 +12,12 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- 15
  * redis配置类
- 16
  * @author bee
-17
  * @date  2019年5月31日
-18
- *
-19
- */
-@Configuration
 
+ */
+@Configuration//不能自动注入，就会 配置注入，  这就是相当于xml文件
 public class RedisConfig {
 
 

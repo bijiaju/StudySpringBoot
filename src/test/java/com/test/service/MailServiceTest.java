@@ -1,3 +1,4 @@
+/*
 package com.test.service;
 
 import com.bee.springboot.Application;
@@ -51,9 +52,10 @@ public class MailServiceTest {
 
     }
 
-    /**
+*
      * 图邮件就是html加入入img
-     */
+
+
     @Test
     public void sendInLiResourceMail(){
         String imgPath = "C:\\Users\\bee\\Downloads\\1.png";
@@ -71,9 +73,10 @@ public class MailServiceTest {
         mailService.sendInLiResourceMail("byq_work@163.com","这是邮件主题",sb.toString(),imgPath,rscId);
     }
 
-    /**
+*
      * 发送模板邮件
-     */
+
+
     @Test
     public void sendTemplateMail(){
          Context context  = new Context();
@@ -83,3 +86,4 @@ public class MailServiceTest {
     }
 }
 
+*/

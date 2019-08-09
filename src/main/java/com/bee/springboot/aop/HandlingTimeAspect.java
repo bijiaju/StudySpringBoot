@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Component
+@Component//表示 该类是组件类    @ComponentScan默认会扫描与配置类相同的包！！！如果这个类加了该注解，会默认扫描改包下所有类，子包的类
 @Aspect// 指定当前类为切面类
 public class  HandlingTimeAspect {
 

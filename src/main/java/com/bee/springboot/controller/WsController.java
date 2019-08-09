@@ -1,7 +1,5 @@
 package com.bee.springboot.controller;
 
-import java.security.Principal;
-
 import com.bee.springboot.entity.WiselyMessage;
 import com.bee.springboot.entity.WiselyResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +8,21 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
+import java.security.Principal;
 
+/**
+ * Websocket的演示
+ */
 @Controller
 public class WsController {
 
-	@MessageMapping("/welcome")
+	/**
+	 *
+	 * @param message
+	 * @return
+	 * @throws Exception
+	 */
+	@MessageMapping("/welcome")//功能类似requestmapping
 	@SendTo("/topic/getResponse")
 	public WiselyResponse say(WiselyMessage message) throws Exception {
 		Thread.sleep(3000);

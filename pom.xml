@@ -26,7 +26,7 @@
 	</properties>
 
 	<dependencies>
-		<!--这个包里已经包含tomcat了-->
+		<!--这个包里已经包含tomcat、springmvc-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -94,6 +94,7 @@
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 
+		<!-- ehcache 是另一种缓存方式-->
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
@@ -105,23 +106,19 @@
 			<version>18.0</version>
 		</dependency>
 		<!--
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>18.0</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
 		</dependency>
-		-->
+-->
 
 		<!-- devtools插件，热部署 ，暂时是为了上传-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
+			<scope>true</scope>
 		</dependency>
 
 		<!-- 初认识actuator，监控整个应用程序-->

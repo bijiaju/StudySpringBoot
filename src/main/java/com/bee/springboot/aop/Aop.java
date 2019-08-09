@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
 
 */
 /**
- * z这个是aop例子
+ * z这个是aop例子，！！！！切面的工作是通知
  *//*
 
 

@@ -9,6 +9,7 @@ import com.bee.springboot.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -52,9 +53,11 @@ public class UserServiceImpl implements UserService{
         person.setAge(11);
         person.setName("asdfads");
         personMapper.addPersonInfo(person);
-
-        //int i=1/0;
-
+       /* try{
+            int i=1/0;
+        }catch (Exception e){
+            e.printStackTrace();
+        }*/
         int count = userMapper.addUserInfo(user);
         System.out.println("为id、key为:"+user.getId()+"数据做了缓存");
 	}
@@ -77,6 +80,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @CacheEvict(value = "user",key="#id")//删除id缓存
     public int dynaDeleteList(List<Integer> ids) {
         int count = userMapper.dynaDeleteList(ids);
         return count;

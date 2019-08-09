@@ -1,14 +1,13 @@
 package com.bee.springboot.controller;
 
 
-import com.bee.springboot.annotation.HandlingTime;
 import com.bee.springboot.entity.TestValidateBean;
 import com.bee.springboot.entity.User;
 import com.bee.springboot.entity.constrains.MiniValidation;
 import com.bee.springboot.service.UserService;
 import com.bee.springboot.util.CommonUtil;
 import com.bee.springboot.util.PageUtil;
-import com.bee.springboot.util.RedisUtil;
+import com.bee.springboot.util.redis.RedisUtil1;
 import com.bee.springboot.util.validation.ResponseStatusEnum;
 import com.bee.springboot.util.validation.ValidateUtil;
 import com.github.pagehelper.Page;
@@ -37,7 +36,7 @@ public class UserController {
 	private UserService userService;
 
 	@Autowired
-	private RedisUtil redisUtil;
+	private RedisUtil1 redisUtil1;
 
 	private LinkedHashMap<String, String> fieldMap = new LinkedHashMap<String, String>(){
 		{
@@ -53,6 +52,19 @@ public class UserController {
 			put("mark", "备注");
 		}
 	};
+
+	@RequestMapping(value = "/testlog")
+	public void exportExcel() {
+		logger.info("我是测试info：{},{}","xx","xxx");
+		try{
+			int p = 1/0;
+		}catch (Exception e){
+			logger.error("报错了：{}",e.getMessage());
+		}
+
+	}
+
+	/*************************测试spring自带缓存*************************************/
 
 	/*@RequestMapping(value = "/excelTemplate", method = RequestMethod.GET)
 	public Map<String,Object> exportExcel(HttpServletResponse response) {
@@ -245,7 +257,8 @@ public class UserController {
 		return CommonUtil.setReturnMap("0","请求成功",retMap);
 	}
 
-	@HandlingTime
+	//@HandlingTime
+	//@Synchronized
 	@RequestMapping("/addUserInfo")
     public String addUserInfo() {
 		User user = new User();
@@ -261,12 +274,13 @@ public class UserController {
 	 * @param id
 	 * @return
 	 */
+	//@Synchronized
 	@RequestMapping("/findOneUserInfo")
 	public String addUserInfo(@RequestParam(value = "id", required = false) Integer id) {
 
-		boolean hakey = redisUtil.hasKey("str");
+		boolean hakey = redisUtil1.hasKey("str");
 		System.out.println("haskey:"+hakey);
-		String str = (String) redisUtil.get("str");
+		String str = (String) redisUtil1.get("str");
 		System.out.println("str:"+str);//添加了Redis缓存测试
 
 		User user = userService.selectUserById(id);
@@ -289,6 +303,20 @@ public class UserController {
 		ids.add(9);
 		int count = userService.dynaDeleteList(ids);
 		return "success: 删除"+count;
+	}
+
+
+	/**
+	 * 测试Redis,ok没有问题
+	 * @return
+	 */
+	//@Synchronized
+	@RequestMapping("/testRedis")
+	public String testRedis() {
+		redisUtil1.set("str","byq");
+		Object str = redisUtil1.get("str");
+		System.out.println(str.toString());
+		return "success:";
 	}
 	
 }  

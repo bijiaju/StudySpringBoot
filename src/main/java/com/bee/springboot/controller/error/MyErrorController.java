@@ -1,4 +1,3 @@
-/*
 package com.bee.springboot.controller.error;
 
 
@@ -7,6 +6,7 @@ import com.bee.springboot.util.response.DefaultResponseStatus;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.format.Formatter;
@@ -25,32 +25,31 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import org.springframework.boot.autoconfigure.web.ErrorController;
-import org.springframework.boot.autoconfigure.web.ErrorController;
 
 
-*/
+
 /**
  * unify the error response
+ * PS: 只要不try-catch,都会在这里处理，目前只是在controller层处理错误,但是service中出现错误也会报错，但是不能try-catch
  * <p>
  * created at 2018/7/12
  *
  * @author
- *//*
+ */
 
 @RestController
 //不用任何的配置，只要把这个类放在项目中，Spring能扫描到的地方。就可以实现全局异常的回调。
 @ControllerAdvice(basePackages = {"com.bee.springboot.controller"})
-@RequestMapping("${server.error.path:${error.path:" + ErrorController.ERROR_PATH + "}}")
+@RequestMapping("${server.error.path:${error.path:" + MyErrorController.ERROR_PATH + "}}")
 @Api(tags = "统一错误处理")
-public class ErrorController implements ErrorController {
+public class MyErrorController implements org.springframework.boot.autoconfigure.web.ErrorController {
     static Logger LOG = LoggerFactory.getLogger(ErrorController.class);
     static final String ERROR_PATH = "/error";
     static final Map<String, String> ErrorMap = new HashMap<>();
-    */
-/**
+
+    /**
      * 如果原始异常信息中包含特定的key，就转换为对应的message
-     *//*
+     */
 
     static final Map<String, String> MessageMap = new HashMap<>();
 
@@ -59,7 +58,7 @@ public class ErrorController implements ErrorController {
         MessageMap.put(DataIntegrityViolationException.class.getName(), "数据操作异常,请修改后重新操作");
     }
 
-    @InitBinder
+    @InitBinder//注解标注的方法
     public void intDate(WebDataBinder dataBinder) {
         dataBinder.addCustomFormatter(new Formatter<Date>() {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -84,6 +83,30 @@ public class ErrorController implements ErrorController {
         });
     }
 
+    /**
+     * 通用异常处理，其他的异常在后续中定义
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(Exception.class)//注解标注的方法
+    public CommonResponse handleException(Exception e) {
+        String message = ErrorMap.get(e.getClass().getName());
+        if (message != null) {
+            return log((DefaultResponseStatus) ResponseStatus.fail(message), e);
+        }
+        message = e.getMessage();
+        if (message != null) {
+            for (String s : MessageMap.keySet()) {
+                if (message.contains(s)) {
+                    message = MessageMap.get(s);
+                    break;
+                }
+            }
+        }
+        DefaultResponseStatus status = new DefaultResponseStatus(false, "Exception"
+                , message);
+        return log(status, e);
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public CommonResponse handleValidException(MethodArgumentNotValidException e) {
@@ -140,25 +163,7 @@ public class ErrorController implements ErrorController {
     }
 
 
-    @ExceptionHandler(Exception.class)
-    public CommonResponse handleException(Exception e) {
-        String message = ErrorMap.get(e.getClass().getName());
-        if (message != null) {
-            return log((DefaultResponseStatus) ResponseStatus.fail(message), e);
-        }
-        message = e.getMessage();
-        if (message != null) {
-            for (String s : MessageMap.keySet()) {
-                if (message.contains(s)) {
-                    message = MessageMap.get(s);
-                    break;
-                }
-            }
-        }
-        DefaultResponseStatus status = new DefaultResponseStatus(false, "Exception"
-                , message);
-        return log(status, e);
-    }
+
 
     @RequestMapping("")
     public CommonResponse error(HttpServletRequest request) {
@@ -183,9 +188,9 @@ public class ErrorController implements ErrorController {
         return CommonResponse.failResponse(status);
     }
 
-    //@Override
+    @Override
     public String getErrorPath() {
         return ERROR_PATH;
     }
 }
-*/
+

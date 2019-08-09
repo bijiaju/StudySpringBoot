@@ -16,8 +16,8 @@ import javax.sql.DataSource;
 
 @SpringBootApplication //核心注解，主要目的是开启自动注解，源码内部是组合配置
 @MapperScan("com.cwh.springbootMybatis.mapper")//添加这个，就不用在dao添加mapper注解了
-@EnableCaching//开启缓存
-@EnableAspectJAutoProxy//开启aop
+@EnableCaching//开启缓存，也是尽量放在service层
+@EnableAspectJAutoProxy//开启aop自动代理
 public class Application implements CommandLineRunner{
 
 	//@Qualifier("")
