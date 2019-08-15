@@ -248,7 +248,10 @@ public class GuavaApi {
             e.printStackTrace();
         }
        // cache.put("test", "a");
-        cache.getIfPresent("points");
+        List<Book> points = cache.getIfPresent("points");
+        for (Book book : points) {
+            System.out.println(book);
+        }
         System.out.println(cache.asMap());
        /* try {
             Thread.sleep(2000);

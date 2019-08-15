@@ -265,7 +265,7 @@ public class UserController {
 
 		user.setName("cwh");
 		user.setCreateDate(new Date());
-		userService.insert(user);
+		userService.insert(user);//测试tag
         return "success:"+user.toString();
     }
 
@@ -301,7 +301,22 @@ public class UserController {
 		ids.add(6);
 		ids.add(8);
 		ids.add(9);
-		int count = userService.dynaDeleteList(ids);
+
+		///新的list遍历方式
+		ids.forEach(integer -> {
+			System.out.println(integer);
+		});
+
+		//遍历map
+		Map<String,Integer> params = new HashMap<>();
+		params.put("key1",123);
+		params.put("key3",183);
+		params.put("key7",128);
+		params.forEach((key,value)->{
+			System.out.println(key+ ":" +value);
+		});
+		//int count = userService.dynaDeleteList(ids);
+		int count =0;
 		return "success: 删除"+count;
 	}
 
@@ -318,5 +333,32 @@ public class UserController {
 		System.out.println(str.toString());
 		return "success:";
 	}
-	
+
+	public static void main(String[] args){
+		List<Integer> ids = new ArrayList<Integer>();
+		ids.add(6);
+		ids.add(8);
+		ids.add(9);
+
+		///新的list遍历方式
+		ids.forEach(integer -> {
+			System.out.println(integer);
+		});
+
+		//遍历map
+		Map<String,Integer> params = new HashMap<>();
+		params.put("key1",123);
+		params.put("key3",183);
+		params.put("key7",128);
+		params.forEach((key,value)->{
+			System.out.println(key+ ":" +value);
+		});//使用lamada表达式
+		//变量Set
+		Set<String> sets = new HashSet();
+		sets.add("123456");
+		sets.add("12345");
+		sets.forEach(item->{
+			System.out.println(item);
+		});
+	}
 }  
