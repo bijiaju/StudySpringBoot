@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 //import com.bee.springboot.util.ExcelUtil;
@@ -260,11 +261,13 @@ public class UserController {
 	//@HandlingTime
 	//@Synchronized
 	@RequestMapping("/addUserInfo")
-    public String addUserInfo() {
+    public String addUserInfo(HttpSession session) {
+
 		User user = new User();
 
 		user.setName("cwh");
 		user.setCreateDate(new Date());
+		session.setAttribute("myuser",user);
 		userService.insert(user);//测试tag
         return "success:"+user.toString();
     }

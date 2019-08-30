@@ -1,4 +1,5 @@
 /*
+
 package com.bee.springboot.config;
 
 
@@ -44,4 +45,5 @@ public class ElasticSearchConfig {
 
 
 }
+
 */
