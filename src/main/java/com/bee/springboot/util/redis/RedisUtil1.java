@@ -17,14 +17,16 @@ import java.util.concurrent.TimeUnit;
 @Component
 public final class RedisUtil1 {
 
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 
-    /*public static void main(String[] args){   不可这么引用
-        RedisUtil re = new RedisUtil();
+ /*  public static void main(String[] args){  ////
+        RedisConnection connection = redisTemplate.getConnectionFactory().getConnection();
+        RedisUtil1 re = new RedisUtil1();
         boolean hasKey = re.hasKey("str");
         System.out.println("hasKey:"+hasKey);
     }*/
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+
     // =============================common============================
    /* RedisConnection connection = redisTemplate.getConnectionFactory().getConnection();
     RedisClusterConnection clusterConnection = redisTemplate.getConnectionFactory().getClusterConnection();

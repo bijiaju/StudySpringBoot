@@ -16,7 +16,10 @@ public class CalendarUtils {
     private static SimpleDateFormat formatTimeS = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");//NOSONAR
     private static SimpleDateFormat formatTimes = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//NOSONAR
 
-    public static void main(String[] args) {
+
+    private static long ONE_YEAR = 31536000000L;//年的毫秒数
+
+    public static void main(String[] args) throws  Exception{
         /*System.out.println( getDayOfDate(new Date()) );//23
         System.out.println( getWeekOfDate(new Date()) );//5
         System.out.println(getCurrTimesec());//2018-11-23 16:47:23
@@ -29,6 +32,38 @@ public class CalendarUtils {
         //main1();.
         int i= compare_date("1999-12-11 09:59:12", "1999-12-11 09:59:12");
         System.out.println("i=="+i);
+
+        //Date from =
+        int yearByMinusDate = getYearByMinusDate(formatTimes.parse("2016-12-11 09:59:12"), new Date());
+        System.out.println("相差=="+yearByMinusDate);
+
+        long yearByMinusD= getDayByMinusDate(formatTimes.parse("2016-12-11 09:59:12"), new Date());
+        System.out.println("相差=="+yearByMinusD);
+
+        Date fromDate = formatTimes.parse("2016-08-30 09:59:12");
+        fromDate.getTime();
+        long res = new Date().getTime()-fromDate.getTime();
+        System.out.println(System.currentTimeMillis());
+        System.out.println(new Date().getTime());
+
+        if(res>=94608000000L){
+            System.out.println("相差三年"+fromDate.getTime());
+        }else {
+            System.out.println("不足三年"+fromDate.getTime());
+        }
+        System.out.println(isExceedYear(fromDate,3));
+    }
+    /*后续添加*/
+
+    /**
+     *  计算给定时间是否超过若干年
+     * @param fromDate
+     * @param year
+     * @return
+     */
+    public static boolean isExceedYear(Date fromDate,int year){
+        long res = System.currentTimeMillis() - fromDate.getTime();
+        return (res>=(year*ONE_YEAR))?true:false;
     }
 
     /**

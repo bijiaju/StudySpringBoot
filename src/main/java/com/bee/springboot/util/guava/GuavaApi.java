@@ -5,7 +5,9 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -248,8 +250,34 @@ public class GuavaApi {
             e.printStackTrace();
         }
        // cache.put("test", "a");
-        cache.getIfPresent("points");
-        System.out.println(cache.asMap());
+       /* List<Book> points = cache.getIfPresent("points");
+        for (Book book : points) {
+            System.out.println(book);
+        }
+        System.out.println(cache.asMap());*/
+
+
+        LoadingCache<String, Map> phoneCache = CacheBuilder.newBuilder().expireAfterAccess(1000, TimeUnit.SECONDS).build(
+                new CacheLoader<String, Map>() {
+                    @Override
+                    public Map load(String key) throws Exception {
+                        List<Book> books = new ArrayList<Book>();
+                        HashMap<String,Object> map  = new HashMap<>();
+                        for (int i = 0; i < 3; i++) {
+                            Book b = new Book(i);
+                            books.add(b);
+                            map.put(""+i,i);
+                        }
+                        return map;
+                    }
+                }
+        );
+
+
+        Map<String,Object> points1 = phoneCache.get("points");
+        ;
+        System.out.println(points1.get("1"));
+        System.out.println(points1.get("2"));
        /* try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
