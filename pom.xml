@@ -202,7 +202,7 @@
 		</dependency>
 
 
-		<!--rabbit所需要的依赖-->
+		<!--rabbit所需要的依赖,后面是rabiit客户端-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>

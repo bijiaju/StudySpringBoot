@@ -32,3 +32,4 @@ c. Controller     http://localhost:8882/user/getUserInfo调用实现
 25.给springboot添加logback日志，只application中添加配置，就可以了
 26.加入elasticsearch
 27.加入分布式Session的管理，用Resis存储Session信息
+28.成功集成rabbitmq，  1.RabbitConfig   2.配置发送者  3. 配置ReceiveHandler 监听
