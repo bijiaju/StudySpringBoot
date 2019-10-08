@@ -1,4 +1,4 @@
-/*
+package com.bee.springboot.controller.elasticsearch;/*
 package com.bee.springboot.controller;
 
 
@@ -60,7 +60,7 @@ public class ESController {
                     .field("author", author)
                     .field("word_count", word_count)
                     .field("publish_date", publishDate.getTime())
-                    .endObject();
+                    .endObject();//XContentBuilder就是为了构建json
             IndexResponse result = this.transportClient.prepareIndex("book", "novel")
                     .setSource(content)
                     .get();

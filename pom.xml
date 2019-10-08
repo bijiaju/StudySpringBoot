@@ -24,8 +24,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
         <!--因为springboot内置的是2.多的es，所以要覆盖-->
-        <elasticsearch.version>5.6.3</elasticsearch.version>
-		<spring.data.elasticsearch.version>3.1.2.RELEASE</spring.data.elasticsearch.version>
+     <!--   <elasticsearch.version>5.6.3</elasticsearch.version>
+		<spring.data.elasticsearch.version>3.1.2.RELEASE</spring.data.elasticsearch.version>-->
 	</properties>
 
 	<dependencies>
@@ -264,6 +264,10 @@
 		</dependency>
 
 		<!--Spring Boot 整合 es-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+		</dependency>
 		<!--<dependency>
 			<groupId>org.elasticsearch</groupId>
 			<artifactId>elasticsearch</artifactId>
@@ -289,11 +293,7 @@
 			<artifactId>spring-data-elasticsearch</artifactId>
 			<version>${spring.data.elasticsearch.version}</version>
 		</dependency>-->
-	<!--	<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-			<version>2.1.4.RELEASE</version>
-		</dependency>-->
+	<!--	-->
 
 
 
@@ -301,6 +301,14 @@
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-data-redis</artifactId>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.4</version>
 		</dependency>
 
 	</dependencies>
