@@ -1,6 +1,7 @@
 package com.bee.springboot.controller;
 
 
+import com.bee.springboot.config.RabbitmqConfig;
 import com.bee.springboot.entity.TestValidateBean;
 import com.bee.springboot.entity.User;
 import com.bee.springboot.entity.constrains.MiniValidation;
@@ -16,6 +17,7 @@ import io.swagger.annotations.Api;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,6 +40,25 @@ public class UserController {
 
 	@Autowired
 	private RedisUtil1 redisUtil1;
+
+	@Autowired
+	RabbitTemplate rabbitTemplate;
+
+	@RequestMapping(value = "/send")
+	public void sendMessage() {
+		String message = "send email message to user";
+
+
+/**
+ * 参数：
+ * 1、交换机名称
+ * 2、routingKey
+ * 3、消息内容
+ */
+
+		rabbitTemplate.convertAndSend(RabbitmqConfig.EXCHANGE_TOPICS_INFORM,"inform.email",message);
+		System.out.println("生产者发送了消息");
+	}
 
 	private LinkedHashMap<String, String> fieldMap = new LinkedHashMap<String, String>(){
 		{

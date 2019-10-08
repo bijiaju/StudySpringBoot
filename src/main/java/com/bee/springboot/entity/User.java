@@ -8,7 +8,9 @@ import java.util.Date;
 /**
  * JsonFormat固定json输出的形式
  */
-public class User implements Serializable {  
+public class User implements Serializable {
+
+    
     private Long id;  
     private String name;
 

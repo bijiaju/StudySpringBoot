@@ -32,7 +32,7 @@ public class Consumer {
         //5.创建消费者
         QueueingConsumer queueingConsumer = new QueueingConsumer(channel);
         //6.设置Channel
-        channel.basicConsume(queueName,queueingConsumer);
+        channel.basicConsume(queueName,queueingConsumer);//不关闭是因为让consumer保持持续监听队列
         // 7. 获取消息
         while(true){
             QueueingConsumer.Delivery delivery = queueingConsumer.nextDelivery();
@@ -41,7 +41,7 @@ public class Consumer {
         }
 
 
-     /*   //5. 管理链接
+     /*   //5. 管理链接   不关闭是因为让consumer保持持续监听队列
         channel.close();
         connection.close();*/
 
