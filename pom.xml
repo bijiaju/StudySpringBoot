@@ -28,6 +28,24 @@
 		<spring.data.elasticsearch.version>3.1.2.RELEASE</spring.data.elasticsearch.version>-->
 	</properties>
 
+	<!--指定打包的镜像仓库-->
+	<repositories>
+		<repository>
+			<id>maven-ali</id>
+			<url>http://maven.aliyun.com/nexus/content/groups/public//</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+
 	<dependencies>
 		<!--这个包里已经包含tomcat、springmvc-->
 		<dependency>
@@ -337,9 +355,9 @@
 				<version>1.0.0</version>
 				<configuration>
 					<!-- docker私服的地址 -->
-					<dockerHost>http://192.168.236.128:2375</dockerHost>
+					<dockerHost>http://192.168.1.129:2375</dockerHost>
 					<!--最终生成 镜像名称以及版本号-->
-					<imageName>192.168.236.128:5000/studyspringboot</imageName>
+					<imageName>192.168.1.129:5000/studyspringboot</imageName>
 					<!--依赖的基础镜像-->
 					<!--  <baseImage>hub.c.163.com/r00txx/java8</baseImage>-->
 					<!--Dockerfile的位置 -->

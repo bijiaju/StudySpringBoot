@@ -34,3 +34,4 @@ c. Controller     http://localhost:8882/user/getUserInfo调用实现
 26.加入elasticsearch
 27.加入分布式Session的管理，用Resis存储Session信息
 28.成功集成rabbitmq，  1.RabbitConfig   2.配置发送者  3. 配置ReceiveHandler 监听
+29.添加了maven-docker插件
