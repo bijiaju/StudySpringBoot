@@ -24,6 +24,7 @@ Spring Boot与mybatis整合以及开启声明式事务
 a.首先是对bean进行配置：通过javax.validation.constraints下的注解实现字段验证，便于后续校验  bean是TestValidateBan
 b.com.bee.springboot.util.validation;查看 校验 方法
 c. Controller     http://localhost:8882/user/getUserInfo调用实现
+                  http://localhost:8882/person/findAll
 20. JsonFormat 对 日期格式的修改，响应成自己的效果 json
 21.添加了 RocketMq,并测试了一下，有时候可以成功，但是总体还是没有理解透
 22.aop自定义注解
